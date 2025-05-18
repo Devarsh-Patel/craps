@@ -3,16 +3,21 @@
 # Import necessary modules
 from game import Game
 from player import Player
+import random
+import string
+
+def random_name(length=6):
+    return ''.join(random.choices(string.ascii_uppercase, k=length))
 
 def main():
-    # Initialize the game with 6 players, each starting with $5000
+    # Initialize the game with 6 players, each with a fixed starting balance
     num_players = 6
     starting_balance = 5000
     players = []
 
-    # Create player instances
+    # Create player instances with random names and fixed balance
     for i in range(num_players):
-        player_name = f"Player {i + 1}"
+        player_name = random_name()
         players.append(Player(name=player_name, balance=starting_balance))
 
     # Create a Game instance
